@@ -1,0 +1,61 @@
+/*stili generali*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(56, 55, 55);
+}
+
+.container {
+    width: 100%;
+}
+
+.card {
+    position: relative;
+    width: 50%;
+    margin: 200px auto;
+}
+
+img {
+    width: 950px;
+    height: 380px;
+    object-fit: cover;
+    object-position: 100% 35%;
+}
+
+.active {
+    display: block;
+}
+
+.inactive {
+    display: none;
+}
+
+.card .btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+}
+
+.card i {
+    background-color: rgba(255, 255, 255, 0.644);
+    padding: 20px 5px 21px;
+    border-radius: 50%;
+}
+
+.card i:hover {
+    background-color: #fff;
+}
+
+.container .previous {
+    top: 10px;
+    right: 475px;
+}
+
+.container .next {
+    bottom: 10px;
+    right: 475px;
+}
