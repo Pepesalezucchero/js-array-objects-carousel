@@ -27,12 +27,12 @@ img {
     object-position: 100% 35%;
 }
 
-.active {
-    display: block;
+.image, .inactive {
+    display: none;
 }
 
-.inactive {
-    display: none;
+.active {
+    display: block;
 }
 
 .card .btn {
@@ -58,19 +58,17 @@ img {
 }
 
 .container .next {
-    bottom: 30px;
+    bottom: 50px;
     right: 475px;
 }
 
 .game-title, .game-description {
     color: #fff;
     position: absolute;
-    bottom: 0;
-    left: 0;
 }
 
 .game-title {
-    bottom: 30px;
+    bottom: 50px;
     left: 10px;
 }
 
