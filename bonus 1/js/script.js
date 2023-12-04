@@ -55,6 +55,21 @@ gamesImages.forEach ((element) => {
     card.innerHTML += image;
 });
 
+//bonus 1
+//creo lo spazio per le immagini nella thumbnail
+const thumbnail = document.createElement("div");
+thumbnail.classList.add("side-container");
+workSpace.append(thumbnail);
+//bonus 1
+//creo quello che verrà stampato in pagina, uso il ciclo forEach per selezionare ogni silngolo elemento dell'array (nelle thumbnails qua)
+gamesImages.forEach ((element) => {
+    console.log(element);
+
+    let imageThumb = `
+    <img class="dark borders" src="${element.image}" alt="immagine di gioco">`
+    thumbnail.innerHTML += imageThumb;
+});
+
 //creo le frecce e le rispettive classi
 let userBtnUp = `<div class="btn next"><i class="fa-solid fa-chevron-down fa-2xl" style="color: #000000;"></i></div>`;
 card.innerHTML += userBtnUp;
@@ -65,6 +80,10 @@ card.innerHTML += userBtnDown;
 let pageImage = document.getElementsByClassName("image");
 let gameTitle = document.getElementsByClassName("game-title");
 let gameDescription = document.getElementsByClassName("game-description");
+
+//bonus 1
+let pageThumbs = document.getElementsByClassName("dark");
+let pageBordersThumbs = document.getElementsByClassName("borders");
 console.log(pageImage);
 
 //immagine di partenza
@@ -74,6 +93,10 @@ if(activeItem === 0) {
     pageImage[activeItem].classList.add("active"); //aggiungendo active, l'immagine e i testi saranno visualizzati in pagina
     gameTitle[activeItem].classList.add("active");
     gameDescription[activeItem].classList.add("active");
+
+    //bonus 1
+    pageThumbs[activeItem].classList.remove("dark");
+    pageBordersThumbs[activeItem].classList.add("borders");
 };
 
 //imposto la freccia inferiore per far scorrere le immagini
@@ -86,20 +109,38 @@ next.addEventListener("click",
             pageImage[activeItem].classList.remove("active"); //rimuovendo l'active, le immagini e i testi verranno nascosti
             gameTitle[activeItem].classList.remove("active");
             gameDescription[activeItem].classList.remove("active");
+
+            //bonus 1
+            pageThumbs[activeItem].classList.add("dark");
+            pageBordersThumbs[activeItem].classList.remove("borders");
+
             activeItem++;
             pageImage[activeItem].classList.add("active");
             gameTitle[activeItem].classList.add("active");
             gameDescription[activeItem].classList.add("active");
+
+            //bonus 1
+            pageThumbs[activeItem].classList.remove("dark");
+            pageBordersThumbs[activeItem].classList.add("borders");
 
             //imposto il loop
         } else if (activeItem === pageImage.length - 1) {
             pageImage[activeItem].classList.remove("active");
             gameTitle[activeItem].classList.remove("active");
             gameDescription[activeItem].classList.remove("active");
+
+            //bonus 1
+            pageThumbs[activeItem].classList.add("dark");
+            pageBordersThumbs[activeItem].classList.remove("borders");
+
             activeItem = 0;
             pageImage[activeItem].classList.add("active");
             gameTitle[activeItem].classList.add("active");
             gameDescription[activeItem].classList.add("active");
+
+            //bonus 1
+            pageThumbs[activeItem].classList.remove("dark");
+            pageBordersThumbs[activeItem].classList.add("borders");
         }
     }
 );
@@ -114,20 +155,38 @@ previous.addEventListener("click",
             pageImage[activeItem].classList.remove("active");
             gameTitle[activeItem].classList.remove("active");
             gameDescription[activeItem].classList.remove("active");
+
+            //bonus 1
+            pageThumbs[activeItem].classList.add("dark");
+            pageBordersThumbs[activeItem].classList.remove("borders");
+
             activeItem--;
             pageImage[activeItem].classList.add("active");
             gameTitle[activeItem].classList.add("active");
             gameDescription[activeItem].classList.add("active");
+
+            //bonus 1
+            pageThumbs[activeItem].classList.remove("dark");
+            pageBordersThumbs[activeItem].classList.add("borders");
             
             //imposto il loop
         } else if (activeItem === 0) {
             pageImage[activeItem].classList.remove("active");
             gameTitle[activeItem].classList.remove("active");
             gameDescription[activeItem].classList.remove("active");
+
+            //bonus 1
+            pageThumbs[activeItem].classList.add("dark");
+            pageBordersThumbs[activeItem].classList.remove("borders");
+
             activeItem = pageImage.length - 1;
             pageImage[activeItem].classList.add("active");
             gameTitle[activeItem].classList.add("active");
             gameDescription[activeItem].classList.add("active");
+
+            //bonus 1
+            pageThumbs[activeItem].classList.remove("dark");
+            pageBordersThumbs[activeItem].classList.add("borders");
         }
     }
 );
