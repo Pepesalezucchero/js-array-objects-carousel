@@ -7,6 +7,7 @@ Ovvero se la miniatura attiva è la prima e l’utente clicca la freccia verso d
 la miniatura che deve attivarsi sarà l’ultima e viceversa per l’ultima miniatura se l’utente clicca la freccia verso sinistra.
 */
 
+//creo l'array dei giochi
 const gamesImages = [
     { 
         image: 'img/01.webp',
@@ -35,17 +36,18 @@ const gamesImages = [
     }, 
 ];
 
+//creo lo spazio per le immagini
 const workSpace = document.querySelector(".container");
 const card = document.createElement("div");
 card.classList.add("card");
 workSpace.append(card);
 
-
+//creo quello che verrà stampato in pagina, uso il ciclo forEach per selezionare ogni silngolo elemento dell'array
 gamesImages.forEach ((element) => {
     console.log(element);
 
     let image = `
-    <img class="image" src="${element.image}" alt="immagine di gioco spiderman">
+    <img class="image" src="${element.image}" alt="immagine di gioco">
     <div>
         <h2 class="game-title inactive">${element.title}</h2>
         <p class="game-description inactive">${element.text}</p>
@@ -53,26 +55,26 @@ gamesImages.forEach ((element) => {
     card.innerHTML += image;
 });
 
+//creo le frecce e le rispettive classi
 let userBtnUp = `<div class="btn next"><i class="fa-solid fa-chevron-down fa-2xl" style="color: #000000;"></i></div>`;
 card.innerHTML += userBtnUp;
 let userBtnDown = `<div class="btn previous"><i class="fa-solid fa-chevron-up fa-2xl" style="color: #000000;"></i></div>`;
 card.innerHTML += userBtnDown;
 
-
+//seleziono le immagini e i testi, per inserirli in pagina
 let pageImage = document.getElementsByClassName("image");
 let gameTitle = document.getElementsByClassName("game-title");
 let gameDescription = document.getElementsByClassName("game-description");
 console.log(pageImage);
 
+//immagine di partenza
 let activeItem = 0;
 
 if(activeItem === 0) {
-    pageImage[activeItem].classList.add("active");
+    pageImage[activeItem].classList.add("active"); //aggiungendo active, l'immagine e i testi saranno visualizzati in pagina
     gameTitle[activeItem].classList.add("active");
     gameDescription[activeItem].classList.add("active");
 };
-
-//frecce e navigazione dei contenuti
 
 //imposto la freccia inferiore per far scorrere le immagini
 const next = document.querySelector(".next");
@@ -81,7 +83,7 @@ next.addEventListener("click",
     function () {
 
         if (activeItem < pageImage.length - 1) {
-            pageImage[activeItem].classList.remove("active");
+            pageImage[activeItem].classList.remove("active"); //rimuovendo l'active, le immagini e i testi verranno nascosti
             gameTitle[activeItem].classList.remove("active");
             gameDescription[activeItem].classList.remove("active");
             activeItem++;
@@ -89,6 +91,7 @@ next.addEventListener("click",
             gameTitle[activeItem].classList.add("active");
             gameDescription[activeItem].classList.add("active");
 
+            //imposto il loop
         } else if (activeItem === pageImage.length - 1) {
             pageImage[activeItem].classList.remove("active");
             gameTitle[activeItem].classList.remove("active");
@@ -115,6 +118,8 @@ previous.addEventListener("click",
             pageImage[activeItem].classList.add("active");
             gameTitle[activeItem].classList.add("active");
             gameDescription[activeItem].classList.add("active");
+            
+            //imposto il loop
         } else if (activeItem === 0) {
             pageImage[activeItem].classList.remove("active");
             gameTitle[activeItem].classList.remove("active");
